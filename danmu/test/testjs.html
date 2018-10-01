@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        p{
+            position: absolute;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<p id="test-p" style="font-size: 14px">aaaa</p>
+<canvas id="test-canvas" width="100px" height="100px">
+    <p id="test-p2" style="font-size: 14px">aaaa</p>
+    <p id="test-p3" style="font-size: 14px">aaaa</p>
+</canvas>
+
+</body>
+
+<script>
+
+/*let p = document.getElementById('test-p');
+let c = document.getElementById('test-canvas');
+
+let ctx = c.getContext('2d');
+
+console.log(Math.ceil(ctx.measureText(p.innerHTML).width));*/
+// get integer [1, 10]
+/*for(let i = 0; i < 100; i++)
+    console.log(Math.ceil(Math.random() * 10));*/
+
+let p = document.getElementById('test-p');
+console.log(p.offsetLeft);
+
+function draw(){
+    p.style.left = p.offsetLeft + 2 + 'px';
+    if(p.offsetLeft < 900)
+    requestAnimationFrame(draw.bind(window));
+}
+
+requestAnimationFrame(draw.bind(window));
+
+
+</script>
+
+</html>
