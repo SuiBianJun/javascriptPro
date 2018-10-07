@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moveTest2</title>
+</head>
+<body>
+
+<div id="div_1" style="height: 200px; width: 500px; border: solid 1px gray; position: relative">
+    <div id="div_2" style="height: 10px; width: 10px; border: solid 1px gray; background-color: #721c24; position: absolute"></div>
+</div>
+
+</body>
+
+<script>
+
+    let parent = document.getElementById('div_1');
+    let child = document.getElementById('div_2');
+
+    let timer = null;
+    window.onload = function () {
+      timer = clearInterval(timer);
+
+      setInterval(function () {
+          let speed = 10;
+          if(child.offsetLeft > 400){
+              clearInterval(timer);
+          }else{
+              child.style.left = child.offsetLeft + speed + "px";
+          }
+      }, 200);
+    };
+
+</script>
+</html>

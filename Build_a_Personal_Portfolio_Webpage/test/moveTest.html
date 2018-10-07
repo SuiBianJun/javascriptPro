@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moveTest</title>
+    <style>
+        div{
+            border: solid 1px gray;
+        }
+
+        .class_span_over_message{
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            /*display: inline-block;*/
+            /*visibility: hidden;*/
+            top: 10px;
+            line-height: 100%;
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body>
+
+<div style="width: 200px; height: 200px">
+    <form id="id_form_message">
+    <div class="class_over_message" style="height: 20px; padding: 0; margin: 0; position: relative; width: 50px"><!--<span class="class_over_message">aaa</span>--></div>
+    <div style="height: 50px">
+        <input type="text" id="id_input_username" class="class_input_message" placeholder="input">
+    </div>
+    <div class="class_over_message" style="height: 20px; padding: 0; margin: 0; position: relative; width: 50px"><!--<span class="class_over_message">aaa</span>--></div>
+    <div style="height: 50px">
+        <input type="text" id="id_input_email" class="class_input_message" placeholder="input name">
+    </div>
+    </form>
+    <button id="button_form_submit" type="button" onclick="doFormSubmit()" style="background-color: #007bff">提交</button>
+</div>
+
+</body>
+
+<script>
+    let input_username = document.getElementById('id_input_username');
+    let over_message = document.getElementsByClassName('class_over_message');
+    let class_input_message = document.getElementsByClassName('class_input_message');
+    let button_form_submit = document.getElementById('button_form_submit');
+
+    let span = [document.createElement('span'), document.createElement('span'), document.createElement('span'), document.createElement('span')];
+
+    let flag = [1, 1, 1, 1];
+
+    function doFormSubmit() {
+        let form_message = document.getElementById('id_form_message');
+        form_message.submit();
+    }
+
+    function addSpan(parent, child) {
+
+        child.innerHTML = "aaa";
+        child.className += "class_span_over_message";
+
+        /*child.innerHTML = "aaa";*/
+        parent.appendChild(child);
+
+        /*console.log(child.offsetTop);*/
+
+    }
+
+    function removeSpan(parent, child){
+        child.className = "";
+        child.style.top = 10 + "px";
+        parent.removeChild(child);
+    }
+
+    function moveSpan(child) {
+
+        console.log('moveSpan');
+        let timer = null;
+        clearInterval(timer);
+        let speed = 1;
+        timer = setInterval(function () {
+            if(child.offsetTop < 1){
+                clearInterval(timer);
+            }else{
+                child.style.top = child.offsetTop - speed + "px";
+            }
+        }, 100);
+    }
+    /*console.log(input_username.value.length);
+    for(let i = 0; i < class_input_message.length; i++){
+        class_input_message[i].onclick = function () {
+          over_message[i].style.visibility = "";
+        };
+    }*/
+
+    window.onload = function () {
+
+        for(let i = 0; i < class_input_message.length; i++){
+
+            class_input_message[i].onfocus = function () {
+                span[i].style.color = "rgb(114, 40, 114)";
+            };
+
+            class_input_message[i].onblur = function () {
+                span[i].style.color = "rgb(170, 170, 170)";
+            };
+
+            class_input_message[i].oninput = function () {
+
+                if (class_input_message[i].value.length > 0 && flag[i] === 1) {
+                    addSpan(over_message[i], span[i]);
+                    flag[i] = 0;
+                    moveSpan(span[i]);
+                    /*over_message[i].style.visibility = "";*/
+                } else if(class_input_message[i].value.length === 0){
+                    /*over_message[i].style.visibility = "hidden";*/
+                    removeSpan(over_message[i], span[i]);
+                    flag[i] = 1;
+                }
+            };
+        }
+
+    };
+</script>
+
+</html>

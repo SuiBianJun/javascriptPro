@@ -1,0 +1,165 @@
+body{
+    /*background-color: rgb(136, 136, 136);*/
+    padding: 0;
+    /*margin: 0;*/
+    /*border: 0;*/
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    border: solid 1px gray;
+    background-color: rgb(114, 40, 114);
+    z-index: 10;
+}
+
+.header_center{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 600px;
+
+}
+
+.header_picture{
+    /*width: 400px;*/
+    font-size: small;
+}
+.header_navilist{
+    float: right;
+}
+
+
+#about{
+    position: relative;
+    background-color: rgb(170, 170, 170);
+    height: 200px;
+
+}
+.div_about_center{
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border: solid 1px gray;
+
+}
+.div_about_left{
+    width: 70%;
+    height: 100%;
+    border: solid 1px gray;
+    float: left;
+
+}
+.div_about_right{
+    width: 25%;
+    height: 100%;
+    border: solid 1px gray;
+    font-size: 4px;
+    float: right;
+}
+
+#profile{
+
+    position: relative;/**/
+    height: 120px;
+    background-color: rgb(238, 238, 238);
+}
+
+.profile{
+    height: 100px;
+    width: 60%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border: solid 1px gray;
+}
+
+#contact_me{
+    background-color: rgb(238, 238, 238);
+    height: auto;
+    border: solid 1px gray;
+}
+
+.header_contact_me{
+    height: 90px;
+    border: solid 1px gray;
+}
+
+.content_contact_me{
+    height: 260px;
+    border: solid 1px gray;
+}
+
+.footer_contact_me{
+    height: 70px;
+    border: solid 1px gray;
+}
+
+.container{
+    /*position: absolute;*/
+    height: 800px;
+    width: 100%;
+    top: 40px;
+    border: solid 1px gray;
+
+}
+.item_container{
+    height: auto;
+    position: absolute;
+    width: 600px;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+}
+.item{
+    width: 100%;
+    height: auto;
+    border: solid 1px gray;
+}
+
+ul{
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+
+}
+ul li{
+    font-size: small;
+    float: left;
+    margin-left: 5px;
+    border: solid 1px gray;
+
+}
+ul li:hover{
+    background-color: rgb(231, 231, 231);
+}
+.current{
+    background-color: rgb(231, 231, 231);
+}
+
+.footer{
+    height: 120px;
+    width: 100%;
+    border: solid 1px gray;
+}
+.footer_2{
+    height: 40px;
+    width: 100%;
+    border: solid 1px gray;
+}
