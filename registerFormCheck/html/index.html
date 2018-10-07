@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        .register{
+            width: 600px;
+            height: 400px;
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            border: solid 1px gray;
+        }
+    </style>
+    <script src="../js/check_form.js"></script>
+</head>
+<body>
+<div class="register">
+    <table border="0px" width="100%" >
+        <tr>
+            <td width="100px">注册信息</td>
+            <td width="50px">*必填</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="3"><hr width="100%"></td>
+        </tr>
+    </table>
+    <form id="id_register" action="#" method="post">
+    <table border="0px" width="100%">
+        <tr>
+            <td align="right">*电话：</td>
+            <td width="20px"><input id="id_phone_number" type="text" name="phone_number"></td>
+            <td>最多11位</td>
+        </tr>
+        <tr>
+            <td align="right">*邮箱：</td>
+            <td width="20px"><input id="id_email" type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td align="right">*密码：</td>
+            <td width="20px"><input id="id_password" type="text" name="password"></td>
+        </tr>
+        <tr>
+            <td align="right">*密码确认：</td>
+            <td width="20px"><input id="id_password2" type="text"></td>
+        </tr>
+        <tr>
+            <td align="right">*姓名：</td>
+            <td width="20px"><input id="id_name" type="text" name="name"></td>
+        </tr>
+
+        <tr>
+            <td colspan="1" align="right"><button id="id_build" type="button" onclick="doCheck()">提交</button></td>
+            <td colspan="1" align="left"><button id="id_reset" type="reset">重置</button></td>
+        </tr>
+
+    </table>
+    </form>
+
+</div>
+</body>
+</html>
