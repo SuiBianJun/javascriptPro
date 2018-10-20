@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<form id="test-form" action="#">
+    <legend>请选择想要学习的编程语言：</legend>
+    <fieldset>
+        <p><label class="selectAll"><!--<input type="checkbox">--> <span class="selectAll">全选</span><!--<span class="deselectAll">全不选</span>--></label>
+            <a href="#0" class="invertSelect">反选</a></p>
+        <p><label><input type="checkbox" name="lang" value="javascript"> JavaScript</label></p>
+        <p><label><input type="checkbox" name="lang" value="python"> Python</label></p>
+        <p><label><input type="checkbox" name="lang" value="ruby"> Ruby</label></p>
+        <p><label><input type="checkbox" name="lang" value="haskell"> Haskell</label></p>
+        <p><label><input type="checkbox" name="lang" value="scheme"> Scheme</label></p>
+        <p><button type="button" >Submit</button></p>
+    </fieldset>
+</form>
+
+</body>
+<script>
+
+    let lang = $("#test-form").find("[name = lang]");
+    console.log(lang.length);
+
+    //console.log($(lang[0]).val());
+
+    let flag = [];
+    /*$(lang[0]).click(function () {
+        if($(lang[0]).is(":checked")){
+            console.log("checked");
+        }else
+            console.log("no checked");
+    });*/
+
+    let flag2 = 1;
+
+    lang.map(function (x) {
+        //console.log(lang[x]);
+        let temp = $(lang[x]);
+
+        temp.click(function () {
+            if(temp.is(":checked")){
+                flag[x] = 1;
+            }else{
+                flag[x] = 0;
+            }
+
+            for(let i = 0; i < 5; i++){
+                flag2 = 1;
+                console.log(flag[i]);
+                if(flag[i] === undefined || flag[i] === 0){
+                    console.log("bb");
+                    selectAllBox.text("全选");
+                    selectFlag = 1;
+                    flag2 = 0;
+                    break;
+                }
+            }
+
+            if(flag2 === 1){
+                console.log("cc");
+                selectAllBox.text("全不选");
+                selectFlag = 0;
+            }
+
+        });
+
+
+    });
+
+    let inverSelect = $(".invertSelect");
+    inverSelect.click(function () {
+        console.log("do invert");
+        lang.map(function (x) {
+            //console.log(lang[x]);
+            let temp = $(lang[x]);
+            if(temp.is(":checked")){
+                console.log(temp.parent().text());
+                //temp.attr("checked", "");
+                temp.prop('checked', '');// 使用attr修改无效？？
+                selectAllBox.text("全选");
+                selectFlag = 1;
+                selectAllBox.prop("checked", "");
+
+                for(let i = 0; i < 5; i++){
+                    flag[i] = 0;
+                }
+
+            }else{
+                temp.prop('checked', 'true');
+                selectAllBox.text("全不选");
+                selectFlag = 0;
+                selectAllBox.prop("checked", "");
+
+                for(let i = 0; i < 5; i++){
+                    flag[i] = 1;
+                }
+            }
+        });
+    });
+
+    let selectAllBox = $(".selectAll").find("span");
+    //console.log(selectAllBox);
+    let selectFlag = 1;
+    selectAllBox.click(function () {
+        console.log("select all");
+        if(selectFlag === 1){
+            //console.log(selectAllBox.next());
+            lang.map(function (x) {
+                //console.log(lang[x]);
+                let temp = $(lang[x]);
+                if(!temp.is(":checked")){
+                    temp.prop('checked', 'true');
+                }
+            });
+            selectAllBox.text("全不选");
+            selectFlag = 0;
+            selectAllBox.prop("checked", "true");
+            for(let i = 0; i < 5; i++){
+                flag[i] = 1;
+            }
+        }else{
+            lang.map(function (x) {
+                //console.log(lang[x]);
+                let temp = $(lang[x]);
+                if(temp.is(":checked")){
+                    temp.prop('checked', '');
+                }
+            });
+            selectAllBox.text("全选");
+            selectFlag = 1;
+            selectAllBox.prop("checked", "true");
+
+            for(let i = 0; i < 5; i++){
+                flag[i] = 0;
+            }
+        }
+    });
+
+    let button = $("[type = button]");
+
+    button.click(function () {
+
+        let obj = {};
+
+        let v = [];
+
+        for(let i = 0; i < lang.length; i++){
+            if($(lang[i]).is(":checked")){
+                v.push($(lang[i]).val());
+            }
+        }
+
+        obj["lang"] = v;
+
+        console.log((obj.lang)[4]);
+
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/jquery-2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <style>
+        .white_color{
+            color: #FFFFFF;
+
+        }
+    </style>
+    <script src="../../lib/jquery.animate-colors/jquery.animate-colors-min.js"></script>
+</head>
+<body class="change">
+
+<div class="container">
+    <div class="center-block panel white_color" style=" margin-top: 20%; width: 40%;">
+        <div class="center-block text-center" style="margin-left: 10%; margin-right: 10%; margin-top: 10px">
+            <h1 id="id_quote" class="change change-text">''this is a thumbnail aaa aaaa a aaa aaa aa aa.</h1>
+        </div>
+        <div id="id_name" class="pull-right change change-text" style="margin-top: 20px; margin-right: 10%">- this is a quote</div>
+        <div class="clearfix"></div>
+        <div class="center-block" style="margin-top: 20px">
+            <div style="margin-left: 10%; margin-right: 10%; margin-bottom: 10px">
+                <a type="button" onclick="" class="btn btn-default change white_color" style="border: 0">t</a>
+                <a type="button" onclick="" class="btn btn-default change white_color" style="border: 0">f</a>
+                <a id="id_newquote" type="button" onclick="doNewQuote()" class="btn btn-default pull-right change white_color" style="border: 0">New quote</a>
+            </div>
+        </div>
+    </div>
+    <p class="center-block text-center white_color" style="margin-top: 5px">by SuiBianJun</p>
+</div>
+
+</body>
+
+<script>
+
+    let data = [];
+    let color = ['#B2DFEE', '#C1CDC1', '#8DEEEE', '#7A67EE'];
+    window.onload = function () {
+      console.log('window load data');
+
+      /*$.getJSON('../quote/data/quote.json', function (v) {
+        v.forEach(function (v2) {
+            data.push(v2);
+        });
+      });*/
+
+      //doNewQuote();
+
+    /*let id_newquote = $('#id_newquote');
+    let p = new Promise(function (resolve, reject) {
+        $.getJSON('../quote/data/quote.json', function (v) {
+            v.forEach(function (v2) {
+                data.push(v2);
+            });
+        });
+
+        setTimeout(function () {
+            return resolve(id_newquote);
+        }, 5000);
+    });
+
+    p.then((e)=>{
+        console.log('p then');
+        e.click();
+    });*/
+
+    $.getJSON('../quote/data/quote.json', function (v) {
+        v.forEach(function (v2) {
+            data.push(v2);
+        });
+    });
+
+    let timer = null;
+    clearInterval(timer);
+
+    timer = setInterval(function () {
+        if(data[0] === undefined){
+            //setTimeout(()=>{}, )
+            console.log('waitting');
+        }else{
+            clearInterval(timer);
+            let id_newquote = $('#id_newquote');
+            id_newquote.click();
+        }
+    }, 1000);
+
+    };
+
+    $(document).ready(function () {
+        console.log('document load data');
+
+
+        /*$.getJSON('../quote/data/quote.json', function (v) {
+            v.forEach(function (v2) {
+                data.push(v2);
+            });
+        });*/
+        //setTimeout(doNewQuote(), 2000);
+
+    });
+
+    function doNewQuote() {
+        console.log(data);
+        let index = Math.ceil(Math.random() * data.length - 1);
+        let index2 = Math.ceil(Math.random() * color.length - 1);
+        console.log(data[index]);
+
+        let name = data[index].name;
+        let quote = data[index].quote;
+
+        $('#id_name').text('- ' + name);
+        $('#id_quote').text("''" + quote);
+
+        let change = $('.change');
+        console.log('change len: ' + change.length);
+        change.map(function () {// 因为传入的参数是change[0-n],因此不是jquery对象，而是dom对象
+            if($(this).hasClass('change-text')){
+                console.log('change-text: ' + color[index2]);
+                //$(this).prop('color', color[index2]);
+                this.style.color = color[index2];
+            }else{
+                //$(this).prop('background-color', color[index2]);
+                //this.style.backgroundColor = color[index2];
+
+                $(this).animate({
+                   backgroundColor: color[index2]
+                });
+            }
+        });
+
+    }
+
+</script>
+
+</html>

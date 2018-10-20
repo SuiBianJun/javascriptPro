@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<form id="test-form">
+    name:<input type="text" name="name" class="data-field"><br>
+    password:<input type="text" name="password" class="data-field"><br>
+    email:<input type="text" name="email" class="data-field"><br>
+
+    <label>letter:
+        <select name="letter" class="data-field option">
+            <option>a</option>
+            <option>b</option>
+            <option>c</option>
+            <option>d</option>
+        </select>
+    </label>
+
+    <fieldset style="width: fit-content" class="data-field checkbox">
+        <legend>语言</legend>
+        <label><input type="checkbox" name="lang" value="javascript"> JavaScript</label>
+        <label><input type="checkbox" name="lang" value="python"> Python</label>
+        <label><input type="checkbox" name="lang" value="ruby"> Ruby</label>
+    </fieldset>
+    <fieldset style="width: fit-content" class="data-field radio">
+        <legend>language</legend>
+        <label><input type="radio" name="lang2" value="javascript"> JavaScript</label>
+        <label><input type="radio" name="lang2" value="python"> Python</label>
+        <label><input type="radio" name="lang2" value="ruby"> Ruby</label>
+    </fieldset>
+
+    <button type="button" onclick="doFormSubmit()">提交</button>
+</form>
+
+</body>
+
+<script>
+
+function doFormSubmit() {
+
+    let form = $("#test-form");
+
+    let content = form.find('.data-field');
+
+    let obj = {};
+
+    console.log(content.length);
+
+    for(let i = 0; i < content.length; i++){
+        let temp = $(content[i]);
+        if(temp.hasClass("option")){
+            console.log("this is a selecter");
+            console.log(temp.find(":selected").text());// find(":selected") 表示不知道哪个属性是选中的，反正就是有selected选中的哪个
+
+            obj[temp.attr("name")] = temp.find(":selected").text();
+        }else if(temp.hasClass("checkbox")){
+            console.log();
+            obj[$(temp.find("[type = checkbox]")[0]).attr("name")] = [];
+            console.log("this is a checkbox");
+            (temp.find("[name = lang]")).map(function () {
+                //console.log(this);
+                let temp = $(this);
+                let v = [];
+                if(temp.is(":checked")){
+                    console.log(temp.val());
+
+                    (obj[temp.attr("name")]).push(temp.val());
+                }
+            });
+        }else if(temp.hasClass("radio")){
+            console.log("this is a radio");
+            console.log((temp.find(":checked")).val());
+
+            obj[(temp.find(":checked")).attr("name")] = (temp.find(":checked")).val();
+        }else{
+            console.log("this is input text");
+            console.log(temp.val());
+
+            obj[temp.attr("name")] = temp.val();
+            // 再加入验证逻辑即可吧
+        }
+
+    }
+
+    console.log(obj);
+
+    console.log(JSON.stringify(obj));
+
+}
+
+</script>
+
+</html>

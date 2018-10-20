@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../lib/jquery-2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="../../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h3 class="center-block text-center">Generate Quote</h3>
+    </div>
+
+    <div class="row">
+        <!--<table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quote</th>
+                </tr>
+            </thead>
+            <tr>
+                <td><input class="form-control"></td>
+                <td><input class="form-control"></td>
+            </tr>
+        </table>-->
+
+        <div id="id_name" class="col-lg-3">
+            <h4 class="center-block text-center">Name</h4>
+            <input class="form-control data-name text-center">
+        </div>
+        <div id="id_quote" class="col-lg-9">
+            <h4 class="center-block text-center">Quote</h4>
+            <input class="form-control data-quote text-center">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-lg-3">
+            <button type="button" onclick="doAdd()" class="btn btn-primary">Add</button>
+            <button type="button" onclick="doSave()" class="btn btn-primary">Save</button>
+            <a id="id_download" download="quote.json" href="#" style="display: none"></a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+    let id_name = $("#id_name");
+    let id_quote = $("#id_quote");
+
+
+    
+    function doAdd() {
+
+        let input_name = document.createElement('input');
+        $(input_name).addClass('form-control');
+        $(input_name).addClass('data-name');
+        $(input_name).addClass('text-center');
+
+        let input_quote = document.createElement('input');
+        $(input_quote).addClass('form-control');
+        $(input_quote).addClass('data-quote');
+        $(input_quote).addClass('text-center');
+
+        id_name[0].appendChild(input_name);
+        id_quote[0].appendChild(input_quote);
+    }
+
+    let id_download = $("#id_download");
+    function doSave() {
+        let str = '';
+        let obj = [];
+
+        let data_name = $('#id_name').find('input');
+        let data_quote = $('#id_quote').find('input');
+
+        for(let i = 0; i < data_name.length; i++){
+
+            let data = {
+                id: 0,
+                name: '',
+                quote: ''
+            };
+
+            data.id = i + 1;
+            data.name = $(data_name[i]).val();
+            data.quote = $(data_quote[i]).val();
+
+            obj.push(data);
+        }
+        console.log(JSON.stringify(obj));
+        id_download.prop('href', 'data:text/csv;charset=utf-8,' + JSON.stringify(obj));// json
+        id_download[0].click();
+    }
+
+</script>
+</html>

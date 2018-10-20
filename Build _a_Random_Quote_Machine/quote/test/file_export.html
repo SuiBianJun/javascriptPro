@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../lib/jquery-2.1.1/jquery.min.js"></script>
+    <script src="../../../lib/jquery.animate-colors/jquery.animate-colors.js"></script>
+</head>
+<body>
+
+<button id="id_button" onclick="doExport()" href="#">导出</button>
+<a id="test" download="downlaod.txt" href="#" style="display: none"></a>
+
+<button id="id_button2" onclick="doExport2()" href="#">导出</button>
+<input type="file" id="id_open" style="display: none;">
+</body>
+
+<script>
+
+    let id_open = $('#id_open');
+    let test = $("#test");
+
+    function doExport() {
+        console.log("click");
+        test.prop('href', 'data:text/csv;charset=utf-8,' + 'dlg');// json
+        test[0].click();
+    }
+    
+    function doExport2() {
+        //id_open[0].click();
+        //console.log('click');
+        //document.execCommand('open');
+
+        // 产生随机数
+        console.log(Math.ceil((Math.random()*10)));
+        let body = $('body');
+        body.animate({
+            backgroundColor: '#00346B'
+        });
+    }
+
+</script>
+</html>
