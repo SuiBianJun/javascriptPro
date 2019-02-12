@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab test</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        li{
+            list-style: none;
+            display: inline;
+            padding: 10px;
+            padding-top: 0px;
+
+        }
+        li:hover{
+            background-color: #9fcdff;
+        }
+
+
+
+        .class_div{
+
+            padding: 10px;
+            padding-left: 0px;
+            border-bottom: 1px solid black;
+
+        }
+
+        .tab_content{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            visibility: hidden;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            console.log("onready");
+
+            var header = document.getElementsByClassName("tab_header");
+            for(var i in header){
+
+                header[i].onclick = function () {
+                    console.log("click");
+
+                    settingCss(this, {
+                        "border": "1px solid black",
+                        "borderBottomColor": "grey"
+                    });
+                    var index = 0;
+                    for(var x of header){
+                        if(x !== this){
+                            index++;
+                            settingCss(x, {
+                                "border": "0px",
+                                "borderBottomColor": ""
+                            });
+                        }else{
+                            var content = document.getElementsByClassName("tab_content");
+
+                            for(var y of content){
+
+                                if(index === 0){
+
+                                    y.style.visibility = "visible";
+                                    index--;
+                                    continue;
+                                }else{
+
+                                    y.style.visibility = "hidden";
+
+                                    index--;
+                                }
+
+
+                            }
+
+
+
+                                /*if(k === j){
+                                    content[k].style.visibility = "visible";
+                                }else{
+                                    content[k].style.visibility = "hidden";
+                                }*/
+                            }
+
+                        }
+                    }
+                }
+            document.getElementById("id_li_first").click();
+        };
+
+        function doClick(li) {
+            console.log("do click");
+            //li.style.borderBackground= "red";
+            settingCss(li, {
+                "border": "1px solid black",
+                "borderBottomColor": "grey"
+            });
+        }
+        function settingCss(t, c) {
+            for(var x in c){
+                var y = "t.style." + x + "=" + "\"" + c[x] + "\"" + ";";
+                console.log(y);
+                try {
+                    eval((y));
+                }catch (e){
+                    console.log("dd");
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<div style="width: 400px; height: 400px; background-color: grey; margin: auto; margin-top: 50px;">
+
+    <div class="class_div">
+        <ul>
+            <!--<li id="id_li_first" class="tab_header" onclick="doClick(this)">tab1</li>
+            <li class="tab_header" onclick="doClick(this)">tab2</li>
+            <li class="tab_header" onclick="doClick(this)">tab3</li>-->
+            <li id="id_li_first" class="tab_header">tab1</li>
+            <li class="tab_header">tab2</li>
+            <li class="tab_header">tab3</li>
+        </ul>
+    </div>
+    <div style="width: 200px; height: 100px; padding: 10px; position: relative">
+        <div class="tab_content">1</div>
+        <div class="tab_content">2</div>
+        <div class="tab_content">3</div>
+    </div>
+
+</div>
+
+</body>
+</html>

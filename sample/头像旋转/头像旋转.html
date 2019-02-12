@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 2d 3d 转换</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: grey;
+
+            margin: auto;
+        }
+        span{
+            display: block;
+            background-image: url("a.png");
+            height: 50px;
+            width: 50px;
+            background-size: 100% 100%;
+            margin: auto;
+            border-radius: 25px;
+
+            transition-duration: 1s;
+        }
+
+        span:hover{
+            /*transform: rotateX(90deg);*/
+            transform: rotate(360deg);
+            transition-duration: 1s;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+
+    <span></span>
+
+</div>
+
+</body>
+</html>

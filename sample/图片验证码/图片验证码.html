@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片验证码</title>
+</head>
+
+<script>
+
+    function doGetCode(code) {
+
+        code.innerText = parseInt(Math.random() * 9000 + 1000);// 生成四位数
+
+
+    }
+    
+    function doPost() {
+
+        var code = document.getElementById("code");
+
+        if(code.innerText != document.getElementById("inp_code").value){
+            alert("code error");
+        }
+    }
+
+</script>
+
+<body>
+
+<!--
+
+    1、客户端生成
+        图片+随机数
+
+    2、服务端生成
+        随机数+图片水印合成
+
+-->
+
+
+
+<div style="height: 200px; width: 300px; background-color: grey; border: 1px solid black; ">
+
+    <input id="inp_code" type="text" placeholder="输入验证码"/><span id="code" style="border: 1px solid black;" onclick="doGetCode(this)">点击获取验证码</span>
+    
+    <input type="button" onclick="doPost()" value="提交"/>
+
+</div>
+
+</body>
+</html>

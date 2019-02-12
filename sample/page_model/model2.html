@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>model2</title>
+    <style>
+
+        #id_model_wrap{
+            visibility: hidden;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: grey;
+            opacity: 0.5;
+        }
+
+        #id_model{
+
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background: #2aabd2;
+            text-align: center;
+            z-index: 1001;
+        }
+
+    </style>
+
+    <script>
+
+        function doModelOverlay() {
+
+            document.getElementById("id_model_wrap").style.visibility = "visible";
+            setTimeout(function () {
+                document.getElementById("id_model_wrap").style.visibility = "hidden";
+            }, 7000);
+        }
+
+        function doModelHidden() {
+
+            document.getElementById("id_model_wrap").style.visibility = "hidden";
+
+        }
+
+        //console.log();
+
+    </script>
+
+</head>
+<body>
+
+<div id="id_model_wrap">
+    <div id="id_model">
+        <p>购买成功</p>
+        <p><a href="#" onclick="doModelHidden()">继续浏览>></a></p>
+    </div>
+</div>
+<!--<a href="#" onclick="doModelOverlay()">点击</a>-->
+<button onclick="doModelOverlay()">点击</button>
+
+</body>
+</html>

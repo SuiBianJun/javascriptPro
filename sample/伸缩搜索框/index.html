@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>s伸缩搜索框</title>
+
+    <style>
+
+        .class_div{
+            padding: 10px;
+            width: 400px;
+            height: 200px;
+            background-color: grey;
+            margin: auto;
+        }
+
+        .class_div2{
+
+            width: 100px;
+            height: 20px;
+            margin: auto;
+            border-radius: 14px;
+            border: 1px solid;
+            padding: 4px;
+            position: relative;
+
+            transition: width 1.5s;
+
+            /*background-image: url("search.png");
+            background-size: 32px 32px;
+            background-repeat: no-repeat;
+            background-position: 50px 2px;*/
+        }
+
+        .class_input{
+            width: 80px;
+            position: absolute;
+            border: 0px;
+
+            background-color: grey;
+        }
+
+        .class_input:hover{
+            border: 0px;
+        }
+
+        .class_img{
+            position: absolute;
+            right: 10px;
+        }
+
+    </style>
+
+    <script>
+
+        function doInputFocus() {
+
+            var inputDiv = document.getElementById("id_div2");
+            inputDiv.style.width = "200px";
+
+        }
+
+        function doInputBlur() {
+            //document.getElementById("id_div2").style.width = "100px";
+
+            var inp = document.getElementById("id_input");
+
+            if(inp.value.length > 0){
+                return;
+            }
+
+            document.getElementById("id_div2").style.width = "100px";
+
+        }
+    </script>
+</head>
+<body>
+
+<div class="class_div">
+
+    <div class="class_div2" id="id_div2">
+        <img class="class_img" src="search.png" width="16" height="16">
+        <input class="class_input" id="id_input" type="text" onfocus="doInputFocus()" onblur="doInputBlur()"/>
+    </div>
+
+</div>
+
+</body>
+</html>

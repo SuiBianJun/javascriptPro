@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车加减控件</title>
+
+    <style>
+
+        span{
+            background-color: rgb(173, 254, 254);
+
+        }
+
+    </style>
+
+    <script>
+
+        function doDecreace() {
+
+            if(document.getElementById("id_goods_counts").value == 1){
+                return;
+            }
+
+            document.getElementById("id_goods_counts").value -= 1;
+
+        }
+
+        function doIncreace() {
+            if(document.getElementById("id_goods_counts").innerText == 20){
+                return;
+            }
+
+            document.getElementById("id_goods_counts").value = parseInt(document.getElementById("id_goods_counts").value) + 1;
+        }
+    </script>
+
+</head>
+<body>
+
+<div style="width: 400px; height: 200px; background-color: grey; border: 1px solid black; margin: auto">
+
+    <div>
+        <span id="id_span_decreace" onclick="doDecreace()">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+        <input type="text" name="" id="id_goods_counts" value="1" size="3px">
+        <span id="id_span_increace" onclick="doIncreace()">&nbsp;&nbsp;+&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+</body>
+</html>

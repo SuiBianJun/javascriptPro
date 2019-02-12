@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dynamic table</title>
+
+    <script>
+
+        function doDelete(data) {
+
+            var id_table = document.getElementById("id_table");
+
+            /*var  data2 = data.parentNode.parentNode;
+
+            console.log(data.parentNode.parentNode);
+
+            console.log(id_table.rows);
+
+            console.log(data.parentNode);
+
+            console.log(data.parentNode.parentNode.rowIndex);*/
+
+            id_table.deleteRow(data.parentNode.parentNode.rowIndex);
+
+            if(id_table.rows.length === 0){
+                id_table.parentNode.removeChild(id_table);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="width: 500px; height: 300px; background-color: grey; border: 1px solid black; margin: auto;">
+
+        <table id="id_table" width="400px" border="1px">
+
+            <tr>
+                <td>
+                    1
+                </td>
+                <td>
+                    2
+                </td>
+                <td>
+                    <button onclick="doDelete(this)">删除</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    1
+                </td>
+                <td>
+                    2
+                </td>
+                <td>
+                    <button onclick="doDelete(this)">删除</button>
+                </td>
+            </tr>
+
+        </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab test</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        li{
+            list-style: none;
+            display: inline;
+            padding: 10px;
+            padding-top: 0px;
+        }
+
+        li:hover{
+            border: 1px solid black;
+            border-bottom-color: grey;
+        }
+
+        .class_div{
+
+            padding: 10px;
+            border-bottom: 1px solid black;
+
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            console.log("onready");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<div style="width: 400px; height: 400px; background-color: grey; margin: auto; margin-top: 50px;">
+
+    <div class="class_div">
+        <ul>
+            <li id="id_li_first">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+    </div>
+    <div style="width: 200px; height: 100px; padding: 10px">
+        aaa
+    </div>
+
+</div>
+
+</body>
+</html>
